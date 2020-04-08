@@ -5,9 +5,10 @@ https://youtu.be/T-83W6KOSfE
 
 Fonctionnement simple et directement  fonctionnel en branchant les deux fiches ACC.
 
-L'arduino peut-etre alimenter directement par le + 13,8 V du connecteur ACC si les diodes 1N4001 sont monté comme sur le schéma.
+L'arduino peut-etre alimenté par l'arduino et s'assurant d'alimenter l'arduino en dessous de 12V.
 
-La resistance de 10K est optionnelle, mais il est préférable de la monter.
+La resistance de 10K est optionnelle, mais il est préférable de la  monter.
+
 
 Branchement des connecteurs :
 
@@ -35,4 +36,4 @@ RX - Broche 5
 GND - GND
 
 
-L'interrupteur permet d'inverser le sens de Tracking .
+L'interrupteur permet d'inverser le sens du tracking.
