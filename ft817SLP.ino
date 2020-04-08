@@ -32,15 +32,15 @@ String resultat;                  // Fréquence en chaine de caractère reconsti
 long memFreq817;                  // Mémoire de la fréquence du premier FT-817
 long memFreq818;                  // Mémoire de la fréquence du premier FT-817
 long difference;                  // Calcul du différenciel entre les deux QRG
-long upQrg;                       // Différenciel fixe 28600000 Hz entre les deux fréquences
+long upQrg;                       // Différenciel entre les deux fréquences
 int mhz2;                         // Fréquence de RX Satellite découpée en 2 décimales pour l'injecter dans le qrgHexa[]
 String mhz;                       // Fréquence de RX Satellite découpée en 2 décimales pour l'injecter dans le mhz2
 int INT;                          // QRG découpée en deux décimales pour l'envoyer dans qrgHexa[]
-long offset = 0;
-long qrgDepart;
+long offset = 0;                  // Ecart de fréquence calculé en plus en tracking inverse
+long qrgDepart;                   // Mise en mémoire de la fréquence de référence lors de la mise en service de l'arduino
 
 
-void lireQrg() {                  // Réception en Hexa de la QRG du transceiver d'émission
+void lireQrg() {                  // Réception en Hexa de la QRG du transceiver 1
   RS232.begin(9600);
   for (byte i = 0; i < sizeof(FINDQRG); i++)(RS232.write(FINDQRG[i]));
   //delay(200);
@@ -68,7 +68,7 @@ void lireQrg() {                  // Réception en Hexa de la QRG du transceiver
   }
 }
 
-void lireQrg2() {                   // Réception en Hexa de la QRG du transceiver de réception
+void lireQrg2() {                   // Réception en Hexa de la QRG du transceiver 2
   RS232B.begin(9600);
   for (byte i = 0; i < sizeof(FINDQRG); i++)(RS232B.write(FINDQRG[i]));
 
@@ -197,7 +197,7 @@ void loop() {                           // Programme principal
     if (memFreq818 != qrgFt818) {         // Vérification si la fréquence du Ft818 a changé
         memFreq818 = qrgFt818;    
         lireQrg();
-        offset = qrgDepart - qrgFt818;
+        offset = qrgDepart - qrgFt818;    // Calcul de l'offset à ajouter à la fréquence calculée (difference)
         difference = qrgFt817 - qrgFt818 + qrgFt818 + offset;
         Serial.println(difference);
         tableauQRG();
