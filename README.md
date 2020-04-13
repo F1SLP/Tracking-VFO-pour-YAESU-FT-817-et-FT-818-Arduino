@@ -37,3 +37,5 @@ GND - GND
 
 
 L'interrupteur permet d'inverser le sens du tracking.
+
+Disponible également, le schéma et le fichier arduino pour gérer un afficheur LCD en I2C.
