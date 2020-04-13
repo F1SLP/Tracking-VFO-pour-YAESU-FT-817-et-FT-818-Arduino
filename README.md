@@ -7,7 +7,7 @@ Fonctionnement simple et directement  fonctionnel en branchant les deux fiches A
 
 L'arduino peut-etre alimenté par l'arduino et s'assurant d'alimenter l'arduino en dessous de 12V.
 
-La resistance de 10K est optionnelle, mais il est préférable de la  monter.
+La resistance de 10K est optionnelle, mais il est préférable de la  monter
 
 
 Branchement des connecteurs :
